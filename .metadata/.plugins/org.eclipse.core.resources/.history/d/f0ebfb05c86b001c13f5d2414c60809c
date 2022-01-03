@@ -1,0 +1,24 @@
+package engine.io;
+
+import org.lwjgl.glfw.GLFW;
+
+public class Window {
+	public int width, height;
+	public String title;
+	private long window;
+	
+	public Window(int width, int height, String title) {
+		this.width = width;
+		this.height = height;
+		this.title = title;
+	}
+	
+	public void create() {
+		if (!GLFW.glfwInit()) {
+			System.err.println("ERROR: GFLW not initialized");
+			return;
+		} 
+		
+		window = GLFW.glfwCreateWindow(width, height, title, 0, 0);
+	}
+}

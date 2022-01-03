@@ -1,0 +1,19 @@
+package main;
+
+public class Main {
+	public Thread game;
+	public void start() {
+		if (game == null)
+			game = new Thread("game loop");
+		game.run();
+	}
+	
+	public static void init() {
+		
+	}
+	public static void main(String[] args) {
+		new Main().start();
+
+	}
+
+}

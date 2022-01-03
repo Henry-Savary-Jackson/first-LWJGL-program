@@ -1,0 +1,12 @@
+package engine.io;
+
+public class Window {
+	public int width, height;
+	public String title;
+	public Window(int width, int height, String title) {
+		this.width = width;
+		this.height = height;
+		this.title = title;
+				
+	}
+}

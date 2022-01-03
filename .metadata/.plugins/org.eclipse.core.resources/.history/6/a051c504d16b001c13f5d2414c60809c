@@ -1,0 +1,44 @@
+package main;
+
+import engine.io.Window;
+
+public class Main implements Runnable {
+	public Thread game;
+	public static Window window;	
+	public final int width = 1280;
+	public final int height = 720;
+	
+	public void start() {
+		if (game == null)
+			game = new Thread(this,"game loop");
+		game.start();
+	}
+	
+	public void init() {
+		System.out.println("Starting...");
+		window = new Window(width, height, "game");
+		window.create();
+	}
+	public void run() {
+		init();
+		while(!window.shouldClose()) {
+			update();
+			render();
+		}
+	}
+	
+	private void update() {
+		window.update();
+		
+	}
+	
+	private void render(){
+		window.swapBuffers();
+	}
+	
+	public static void main(String[] args) {
+		new Main().start();
+
+	}
+
+}
