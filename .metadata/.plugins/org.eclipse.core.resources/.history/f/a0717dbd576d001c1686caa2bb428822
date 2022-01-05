@@ -1,0 +1,11 @@
+package engine.graphics;
+
+import engine.math.Vector3f;
+
+public class Vertex {
+	private Vector3f pos;
+	
+	private Vertex(float x , float y, float z) {
+		pos = new Vector3f(x,y,z);
+	}
+}
