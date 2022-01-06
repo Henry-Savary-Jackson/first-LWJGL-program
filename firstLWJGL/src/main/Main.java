@@ -8,6 +8,7 @@ import engine.graphics.Shader;
 import engine.graphics.Vertex;
 import engine.io.Input;
 import engine.io.Window;
+import engine.math.Vector3f;
 
 public class Main implements Runnable {
 	public Thread game;
@@ -17,10 +18,10 @@ public class Main implements Runnable {
 	public Shader shader;
 	public Renderer renderer ;
 	public Mesh mesh= new Mesh(new Vertex[] {
-			new Vertex(-0.5f, 0.5f, 0.0f),
-			new Vertex(0.5f, 0.5f, 0.0f),
-			new Vertex(0.5f, -0.5f, 0.0f),
-			new Vertex(-0.5f, -0.5f, 0.0f)
+			new Vertex(new Vector3f(-0.5f, 0.5f, 0.0f), new Vector3f(1.0f,1.0f,1.0f)),
+			new Vertex(new Vector3f(0.5f, 0.5f, 0.0f), new Vector3f(0f,1.0f,1.0f)),
+			new Vertex(new Vector3f(0.5f, -0.5f, 0.0f), new Vector3f(1.0f,0f,1.0f)),
+			new Vertex(new Vector3f(-0.5f, -0.5f, 0.0f), new Vector3f(1.0f,1.0f,0f))
 			
 	}, new int[] {
 			0,1,2,
@@ -52,7 +53,13 @@ public class Main implements Runnable {
 			if (Input.isKeyDown(GLFW.GLFW_KEY_F11))
 				window.setFullScreen(!window.isFullScreen());
 		}
+		close();
+	}
+	
+	private void close() {
 		window.destroy();
+		mesh.destroy();
+		shader.destroy();
 	}
 
 	private void update() {

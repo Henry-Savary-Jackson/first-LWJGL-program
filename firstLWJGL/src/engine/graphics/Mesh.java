@@ -12,7 +12,7 @@ import org.lwjgl.system.MemoryUtil;
 public class Mesh {
 	private Vertex[] vertices;
 	private int[] indices;
-	private int vao, pbo ,ibo;
+	private int vao, pbo ,ibo, cbo;
 	
 	public Mesh(Vertex[] vertices, int[] indices) {
 		this.vertices = vertices;
@@ -32,11 +32,18 @@ public class Mesh {
 		}
 		verticesBuffer.put(positionData).flip();
 		
-		pbo = GL15.glGenBuffers();
-		GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, pbo);
-		GL15.glBufferData(GL15.GL_ARRAY_BUFFER, verticesBuffer, GL15.GL_STATIC_DRAW);
-		GL20.glVertexAttribPointer(0, 3, GL11.GL_FLOAT, false, 0, 0);
-		GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0);
+		pbo = storeData(verticesBuffer,0,3);
+		
+		FloatBuffer colourBuffer = MemoryUtil.memAllocFloat(vertices.length*3);
+		float[] colourData = new float[vertices.length*3];
+		for (int i = 0; i < vertices.length; i++) {
+			colourData[i*3] = vertices[i].getColour().getX();
+			colourData[i*3 + 1] = vertices[i].getColour().getY();
+			colourData[i*3 + 2] = vertices[i].getColour().getZ();
+		}
+		colourBuffer.put(colourData).flip();
+		
+		cbo = storeData(colourBuffer,1,3);
 		
 		IntBuffer indicesBuffer = MemoryUtil.memAllocInt(indices.length);
 		indicesBuffer.put(indices).flip();
@@ -45,6 +52,23 @@ public class Mesh {
 		GL15.glBindBuffer(GL15.GL_ELEMENT_ARRAY_BUFFER, ibo);
 		GL15.glBufferData(GL15.GL_ELEMENT_ARRAY_BUFFER, indicesBuffer, GL15.GL_STATIC_DRAW);
 		GL15.glBindBuffer(GL15.GL_ELEMENT_ARRAY_BUFFER, 0);
+	}
+	
+	private int storeData(FloatBuffer buffer, int index, int size) {
+		int bufferID = GL15.glGenBuffers();
+		GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, bufferID);
+		GL15.glBufferData(GL15.GL_ARRAY_BUFFER, buffer, GL15.GL_STATIC_DRAW);
+		GL20.glVertexAttribPointer(index, size, GL11.GL_FLOAT, false, 0, 0);
+		GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0);
+		return bufferID;
+	}
+	
+	public void destroy() {
+		GL15.glDeleteBuffers(pbo);
+		GL15.glDeleteBuffers(cbo);
+		GL15.glDeleteBuffers(ibo);
+		
+		GL30.glDeleteVertexArrays(vao);
 	}
 
 	public Vertex[] getVertices() {
@@ -59,6 +83,10 @@ public class Mesh {
 		return vao;
 	}
 
+	public int getCBO() {
+		return cbo;
+	}
+	
 	public int getPBO() {
 		return pbo;
 	}
