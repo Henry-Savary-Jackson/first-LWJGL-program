@@ -16,11 +16,11 @@
     <fullyQualifiedTypeName name="java.nio.IntBuffer"/>
     <fullyQualifiedTypeName name="org.lwjgl.opengl.GL30"/>
     <fullyQualifiedTypeName name="org.lwjgl.opengl.GL15"/>
-    <fullyQualifiedTypeName name="engine.math.Vector3f"/>
     <fullyQualifiedTypeName name="engine.graphics.Renderer"/>
     <fullyQualifiedTypeName name="java.io.IOException"/>
     <fullyQualifiedTypeName name="java.lang.ProcessBuilder"/>
     <fullyQualifiedTypeName name="engine.utils.FileUtils"/>
     <fullyQualifiedTypeName name="org.lwjgl.opengl.GL20"/>
     <fullyQualifiedTypeName name="org.lwjgl.opengl.GL11"/>
+    <fullyQualifiedTypeName name="engine.math.Vector3f"/>
 </qualifiedTypeNameHistroy>
