@@ -1,0 +1,9 @@
+package engine.math;
+
+public class Matrix4f {
+	public static final int SIZE  = 4;
+	private float[] elements;
+	public float get(int x , int y) {
+		return elements[y*SIZE+x];
+	}
+}

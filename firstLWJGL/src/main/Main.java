@@ -2,12 +2,14 @@ package main;
 
 import org.lwjgl.glfw.GLFW;
 
+import engine.graphics.Material;
 import engine.graphics.Mesh;
 import engine.graphics.Renderer;
 import engine.graphics.Shader;
 import engine.graphics.Vertex;
 import engine.io.Input;
 import engine.io.Window;
+import engine.math.Vector2f;
 import engine.math.Vector3f;
 
 public class Main implements Runnable {
@@ -18,14 +20,16 @@ public class Main implements Runnable {
 	public Shader shader;
 	public Renderer renderer ;
 	public Mesh mesh= new Mesh(new Vertex[] {
-			new Vertex(new Vector3f(-0.9f, 0.2f, 0.0f), new Vector3f(1.0f,1.0f,1.0f)),
-			new Vertex(new Vector3f(0.3f, 0.4f, 0.0f), new Vector3f(0f,1.0f,1.0f)),
-			new Vertex(new Vector3f(-0.2f, -0.5f, 0.0f), new Vector3f(1.0f,0f,1.0f)),
-			new Vertex(new Vector3f(-0.5f, -0.5f, 0.0f), new Vector3f(1.0f,1.0f,0f))
+			new Vertex(new Vector3f(-0.9f, 0.5f, 0.0f), new Vector3f(1.0f,1.0f,1.0f), new Vector2f(0.0f,0.0f) ),
+			new Vertex(new Vector3f(-0.5f, -0.1f, 0.0f), new Vector3f(0f,1.0f,1.0f), new Vector2f(0.0f,1.0f) ),
+			new Vertex(new Vector3f(0.25f, -0.4f, 0.0f), new Vector3f(1.0f,0f,1.0f), new Vector2f(1.0f,1.0f) ),
+			new Vertex(new Vector3f(0.5f, 0.9f, 0.0f), new Vector3f(1.0f,1.0f,0f), new Vector2f(1.0f,0.0f) )
 			
 	}, new int[] {
 			0,1,2,3,2,0
-	});
+	}, 
+	new Material("/textures/joyeux anniversaire.jpg")
+	);
 
 	public void start() {
 		if (game == null)
