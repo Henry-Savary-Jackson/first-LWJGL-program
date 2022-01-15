@@ -1,0 +1,12 @@
+package engine.object;
+
+import engine.graphics.Mesh;
+import engine.math.Vector3f;
+
+public class GameObject {
+	private Vector3f position;
+	private Vector3f axis;
+	private float scale;
+	private Mesh mesh;
+	private Renderer renderer;
+}

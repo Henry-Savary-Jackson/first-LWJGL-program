@@ -10,6 +10,10 @@ public class Vector3f {
 		this.z = z;
 	}
 	
+	public static Vector3f addVectors(Vector3f v1, Vector3f v2 ) {
+		return new Vector3f(v1.getX() + v2.getX(), v1.getY() + v2.getY(),v1.getZ() + v2.getZ());
+	}
+	
 	public void set(float x , float y, float z) {
 		this.x = x;
 		this.y = y;

@@ -11,6 +11,7 @@ import engine.io.Input;
 import engine.io.Window;
 import engine.math.Vector2f;
 import engine.math.Vector3f;
+import engine.object.GameObject;
 
 public class Main implements Runnable {
 	public Thread game;
@@ -20,17 +21,19 @@ public class Main implements Runnable {
 	public Shader shader;
 	public Renderer renderer ;
 	public Mesh mesh= new Mesh(new Vertex[] {
-			new Vertex(new Vector3f(-0.9f, 0.5f, 0.0f), new Vector3f(1.0f,1.0f,1.0f), new Vector2f(0.0f,0.0f) ),
-			new Vertex(new Vector3f(-0.5f, -0.1f, 0.0f), new Vector3f(0f,1.0f,1.0f), new Vector2f(0.0f,1.0f) ),
-			new Vertex(new Vector3f(0.25f, -0.4f, 0.0f), new Vector3f(1.0f,0f,1.0f), new Vector2f(1.0f,1.0f) ),
-			new Vertex(new Vector3f(0.5f, 0.9f, 0.0f), new Vector3f(1.0f,1.0f,0f), new Vector2f(1.0f,0.0f) )
+			new Vertex(new Vector3f(-0.5f, 0.5f, 0.0f), new Vector3f(1.0f,1.0f,1.0f), new Vector2f(0.0f,0.0f) ),
+			new Vertex(new Vector3f(-0.5f, -0.5f, 0.0f), new Vector3f(0f,1.0f,1.0f), new Vector2f(0.0f,1.0f) ),
+			new Vertex(new Vector3f(0.5f, -0.5f, 0.0f), new Vector3f(1.0f,0f,1.0f), new Vector2f(1.0f,1.0f) ),
+			new Vertex(new Vector3f(0.5f, 0.5f, 0.0f), new Vector3f(1.0f,1.0f,0f), new Vector2f(1.0f,0.0f) )
 			
 	}, new int[] {
 			0,1,2,3,2,0
 	}, 
 	new Material("/textures/joyeux anniversaire.jpg")
 	);
-
+	public GameObject mainObj ;
+	
+	
 	public void start() {
 		if (game == null)
 			game = new Thread(this, "game loop");
@@ -39,13 +42,14 @@ public class Main implements Runnable {
 
 	public void init() {
 		System.out.println("Starting...");
+		
 		window = new Window(width, height, "game");
 		shader = new Shader("/shaders/mainVertex.glsl","/shaders/mainFragment.glsl");
-		renderer = new Renderer(shader);
 		window.setBackgroundColour(0, 0f,  0.33f);
 		window.create();
-		mesh.create();
-		shader.create();
+		mainObj = new GameObject( new Vector3f(0.2f,-0.2f,0f), new Vector3f(0f,0f,1f), new Vector3f(1f,1f,1f), mesh, shader, 0f);
+		mainObj.create();
+		renderer = new Renderer();
 	}
 
 	public void run() {
@@ -67,13 +71,15 @@ public class Main implements Runnable {
 
 	private void update() {
 		window.update();
+		mainObj.update();
+			
 		if (Input.isMouseButtonDown(GLFW.GLFW_MOUSE_BUTTON_LEFT))
 			System.out.println(String.format("Left Click: X%f Y%f ", Input.getMouseX(), Input.getMouseY()));
 
 	}
 
 	private void render() {
-		renderer.renderMesh(mesh);
+		renderer.renderMesh(mainObj);
 		window.swapBuffers();
 	}
 

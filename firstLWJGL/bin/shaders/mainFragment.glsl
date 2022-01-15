@@ -8,5 +8,5 @@ out vec4 outputColor;
 uniform sampler2D tex;
 
 void main(){
-	outputColor = texture(tex, passTextureCoord) + (vec4(fragmentColor,1.0) * 0.2);
+	outputColor = texture(tex, passTextureCoord) * (vec4(fragmentColor,1.0) );
 }

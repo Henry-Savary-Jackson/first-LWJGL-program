@@ -1,6 +1,0 @@
-package engine.math;
-
-public class Matrix4f {
-	public static final int SIZE  = 4;
-	private float[] elements;
-}

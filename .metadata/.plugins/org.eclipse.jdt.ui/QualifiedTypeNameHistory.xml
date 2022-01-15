@@ -5,17 +5,14 @@
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="org.lwjgl.glfw.GLFWCursorPosCallback"/>
     <fullyQualifiedTypeName name="org.lwjgl.glfw.GLFWMouseButtonCallback"/>
-    <fullyQualifiedTypeName name="engine.io.Input"/>
     <fullyQualifiedTypeName name="org.lwjgl.opengl.GL"/>
     <fullyQualifiedTypeName name="org.lwjgl.glfw.GLFWWindowSizeCallback"/>
-    <fullyQualifiedTypeName name="org.lwjgl.glfw.GLFW"/>
     <fullyQualifiedTypeName name="org.lwjgl.glfw.GLFWScrollCallback"/>
     <fullyQualifiedTypeName name="math.Vector3f"/>
     <fullyQualifiedTypeName name="org.lwjgl.opengl.GL45"/>
     <fullyQualifiedTypeName name="java.nio.IntBuffer"/>
     <fullyQualifiedTypeName name="org.lwjgl.opengl.GL30"/>
     <fullyQualifiedTypeName name="org.lwjgl.opengl.GL15"/>
-    <fullyQualifiedTypeName name="engine.graphics.Renderer"/>
     <fullyQualifiedTypeName name="java.io.IOException"/>
     <fullyQualifiedTypeName name="java.lang.ProcessBuilder"/>
     <fullyQualifiedTypeName name="engine.utils.FileUtils"/>
@@ -28,8 +25,16 @@
     <fullyQualifiedTypeName name="org.lwjgl.opengl.GL13"/>
     <fullyQualifiedTypeName name="engine.graphics.Material"/>
     <fullyQualifiedTypeName name="engine.math.Vector2f"/>
-    <fullyQualifiedTypeName name="engine.math.Vector3f"/>
-    <fullyQualifiedTypeName name="engine.math.Matrix4f"/>
     <fullyQualifiedTypeName name="org.lwjgl.system.MemoryUtil"/>
     <fullyQualifiedTypeName name="java.nio.FloatBuffer"/>
+    <fullyQualifiedTypeName name="java.lang.Math"/>
+    <fullyQualifiedTypeName name="engine.math.Vector3f"/>
+    <fullyQualifiedTypeName name="engine.graphics.Mesh"/>
+    <fullyQualifiedTypeName name="engine.graphics.Renderer"/>
+    <fullyQualifiedTypeName name="engine.math.Matrix4f"/>
+    <fullyQualifiedTypeName name="engine.object.GameObject"/>
+    <fullyQualifiedTypeName name="engine.graphics.Shader"/>
+    <fullyQualifiedTypeName name="engine.io.Input"/>
+    <fullyQualifiedTypeName name="org.lwjgl.glfw.GLFW"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
 </qualifiedTypeNameHistroy>
