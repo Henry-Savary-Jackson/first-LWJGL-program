@@ -21,9 +21,9 @@ public class Main implements Runnable {
 	public Shader shader;
 	public Renderer renderer ;
 	public Mesh mesh= new Mesh(new Vertex[] {
-			new Vertex(new Vector3f(-0.5f, 0.5f, 0.0f), new Vector3f(1.0f,1.0f,1.0f), new Vector2f(0.0f,0.0f) ),
-			new Vertex(new Vector3f(-0.5f, -0.5f, 0.0f), new Vector3f(0f,1.0f,1.0f), new Vector2f(0.0f,1.0f) ),
-			new Vertex(new Vector3f(0.5f, -0.5f, 0.0f), new Vector3f(1.0f,0f,1.0f), new Vector2f(1.0f,1.0f) ),
+			new Vertex(new Vector3f(-0.5f, 0.5f, 1.0f), new Vector3f(1.0f,1.0f,1.0f), new Vector2f(0.0f,0.0f) ),
+			new Vertex(new Vector3f(-0.5f, -0.5f, -1.0f), new Vector3f(0f,1.0f,1.0f), new Vector2f(0.0f,1.0f) ),
+			new Vertex(new Vector3f(0.5f, -0.5f, -0.8f), new Vector3f(1.0f,0f,1.0f), new Vector2f(1.0f,1.0f) ),
 			new Vertex(new Vector3f(0.5f, 0.5f, 0.0f), new Vector3f(1.0f,1.0f,0f), new Vector2f(1.0f,0.0f) )
 			
 	}, new int[] {
@@ -47,9 +47,9 @@ public class Main implements Runnable {
 		shader = new Shader("/shaders/mainVertex.glsl","/shaders/mainFragment.glsl");
 		window.setBackgroundColour(0, 0f,  0.33f);
 		window.create();
-		mainObj = new GameObject( new Vector3f(0.2f,-0.2f,0f), new Vector3f(0f,0f,1f), new Vector3f(1f,1f,1f), mesh, shader, 0f);
+		mainObj = new GameObject( new Vector3f(0.2f,-0.2f,-1f), new Vector3f(0f,0f,1f), new Vector3f(1f,1f,1f), mesh, shader, 0f);
 		mainObj.create();
-		renderer = new Renderer();
+		renderer = new Renderer(window);
 	}
 
 	public void run() {

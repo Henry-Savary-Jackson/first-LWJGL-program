@@ -8,9 +8,10 @@ out vec3 fragmentColor;
 out vec2 passTextureCoord;
 
 uniform mat4 model;
+uniform mat4 proj;
 
 void main(){
-	gl_Position = vec4(position,1.0) * model;
+	gl_Position = proj * model * vec4(position,1.0) ;
 	fragmentColor = colour;
 	passTextureCoord = texturePos;
 }

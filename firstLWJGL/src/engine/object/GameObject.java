@@ -16,6 +16,7 @@ public class GameObject {
 	
 	private float xSpeed = 0f;
 	private float ySpeed = 0f;
+	private float zSpeed = 0f;
 
 
 	public GameObject(Vector3f position, Vector3f axis, Vector3f scale, Mesh mesh, Shader shader, float angle) {
@@ -49,12 +50,20 @@ public class GameObject {
 			ySpeed = 0f;
 		}
 		
+		if (Input.isKeyDown(GLFW.GLFW_KEY_J)) {
+			zSpeed =-0.05f;
+		} else if (Input.isKeyDown(GLFW.GLFW_KEY_K)) {
+			zSpeed = 0.05f;
+		}else {
+			zSpeed = 0f;
+		}
+		
 		if (Input.isKeyDown(GLFW.GLFW_KEY_A)) {
 			angle -= 5f;
 		} else if (Input.isKeyDown(GLFW.GLFW_KEY_D)) {
 			angle += 5f;
 		}
-		position = Vector3f.addVectors(position, new Vector3f(xSpeed,ySpeed,0f));
+		position = Vector3f.addVectors(position, new Vector3f(xSpeed,ySpeed,zSpeed));
 	}
 
 

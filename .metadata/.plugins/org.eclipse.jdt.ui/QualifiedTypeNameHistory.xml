@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="org.lwjgl.glfw.GLFWVidMode"/>
-    <fullyQualifiedTypeName name="engine.io.Window"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="org.lwjgl.glfw.GLFWCursorPosCallback"/>
     <fullyQualifiedTypeName name="org.lwjgl.glfw.GLFWMouseButtonCallback"/>
@@ -31,10 +30,11 @@
     <fullyQualifiedTypeName name="engine.math.Vector3f"/>
     <fullyQualifiedTypeName name="engine.graphics.Mesh"/>
     <fullyQualifiedTypeName name="engine.graphics.Renderer"/>
-    <fullyQualifiedTypeName name="engine.math.Matrix4f"/>
     <fullyQualifiedTypeName name="engine.object.GameObject"/>
     <fullyQualifiedTypeName name="engine.graphics.Shader"/>
     <fullyQualifiedTypeName name="engine.io.Input"/>
     <fullyQualifiedTypeName name="org.lwjgl.glfw.GLFW"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="engine.math.Matrix4f"/>
+    <fullyQualifiedTypeName name="engine.io.Window"/>
 </qualifiedTypeNameHistroy>

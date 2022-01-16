@@ -6,6 +6,7 @@ import org.lwjgl.glfw.GLFWWindowSizeCallback;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 
+import engine.math.Matrix4f;
 import engine.math.Vector3f;
 
 public class Window {
@@ -21,11 +22,13 @@ public class Window {
 	private GLFWWindowSizeCallback sizeCallBack;
 	private boolean resized = false ;
 	private boolean isFullScreen ;
+	private Matrix4f projection;
 	
 	public Window(int width, int height, String title) {
 		this.width = width;
 		this.height = height;
 		this.title = title;
+		projection = Matrix4f.projection((float)this.width/ (float)this.height, 70.0f , 0.2f, 500.0f);
 	}
 	
 	public void create() {
@@ -132,6 +135,10 @@ public class Window {
 
 	public int getHeight() {
 		return height;
+	}
+	
+	public Matrix4f getProjection() {
+		return projection;
 	}
 
 	public String getTitle() {

@@ -5,10 +5,16 @@ import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL30;
 
+import engine.io.Window;
 import engine.math.Matrix4f;
 import engine.object.GameObject;
 
 public class Renderer {
+	private Window window;
+	
+	public Renderer(Window window) {
+		this.window = window;
+	}
 
 	
 	public void renderMesh(GameObject obj) {
@@ -22,6 +28,7 @@ public class Renderer {
 		GL13.glBindTexture(GL11.GL_TEXTURE_2D, mesh.getMaterial().getTextureID());
 		obj.getShader().bind();
 		obj.getShader().setUniform("model", Matrix4f.transform(obj.getPosition(), obj.getAngle(), obj.getAxis(), obj.getScale()));
+		obj.getShader().setUniform("proj", window.getProjection());
 		GL11.glDrawElements(GL11.GL_TRIANGLES, mesh.getIndices().length, GL11.GL_UNSIGNED_INT, 0);
 		obj.getShader().unBind();
 		GL15.glBindBuffer(GL15.GL_ELEMENT_ARRAY_BUFFER, 0);
