@@ -64,6 +64,7 @@ public class GameObject {
 			angle += 5f;
 		}
 		position = Vector3f.addVectors(position, new Vector3f(xSpeed,ySpeed,zSpeed));
+		
 	}
 
 

@@ -44,9 +44,11 @@ public class Matrix4f {
 	    result.set(0, 0, cos + X*X*C );
 	    result.set(0, 1, X*Y*C + Z*sin);
 	    result.set(0, 2, X*Z*C + Y*sin);
-	    result.set(1, 0, Y*X*C + Z*sin);
+	    
+	    result.set(1, 0, Y*X*C - Z*sin);
 	    result.set(1, 1, cos + Y*Y*C);
 	    result.set(1, 2, Y*Z*C - X*sin);
+	    
 	    result.set(2, 0, Z*X*C - Y*sin);
 	    result.set(2, 1, Z*Y*C + X*sin);
 	    result.set(2, 2, cos + Z*Z*C);
@@ -54,13 +56,32 @@ public class Matrix4f {
 		return result;
 	}
 	
+	public static Matrix4f view(Vector3f cameraPos, Vector3f cameraRot) {
+		Matrix4f result = Matrix4f.identity();
+		
+		
+		Vector3f negative = new Vector3f(-cameraPos.getX(),-cameraPos.getY(),-cameraPos.getZ());
+		Matrix4f translation = Matrix4f.translate(negative);
+		
+		Matrix4f rotationX = Matrix4f.rotation(cameraRot.getX(), new Vector3f(1f,0,0));
+		Matrix4f rotationY = Matrix4f.rotation(cameraRot.getY(),  new Vector3f(0,1f,0));
+		Matrix4f rotationZ = Matrix4f.rotation(cameraRot.getZ(),  new Vector3f(0,0,1f));
+		
+		Matrix4f rotation = Matrix4f.multiply(rotationX, Matrix4f.multiply(rotationY, rotationZ));
+		
+		
+		result = Matrix4f.multiply(translation, rotation);
+		return result;
+		
+	}
+	
 	public static Matrix4f transform(Vector3f position, float angle, Vector3f axis, Vector3f scale) {
 		Matrix4f result = Matrix4f.identity();
 		
 		Matrix4f translation = Matrix4f.translate(position);
 		
-		Matrix4f rotationX = Matrix4f.rotation(0, new Vector3f(1f,0,0));
-		Matrix4f rotationY = Matrix4f.rotation(angle,  new Vector3f(0,1f,0));
+		Matrix4f rotationX = Matrix4f.rotation(angle, new Vector3f(1f,0,0));
+		Matrix4f rotationY = Matrix4f.rotation(0,  new Vector3f(0,1f,0));
 		Matrix4f rotationZ = Matrix4f.rotation(0,  new Vector3f(0,0,1f));
 		
 		Matrix4f rotation = Matrix4f.multiply(rotationX, Matrix4f.multiply(rotationY, rotationZ));
